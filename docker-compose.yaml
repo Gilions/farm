@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+#================================
+#      POSTGRES
+#================================
+  farm_db:
+    image: postgres:14-alpine
+    container_name: farm_db
+    restart: always
+    volumes:
+      - farm_db:/var/lib/postgresql/data/
+    env_file:
+      - ./src/.env
+
+#================================
+#       WEB APPLICATION
+#================================
+  farm_app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: farm_app
+    restart: on-failure
+    container_name: farm_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - farm_db
+    volumes:
+      - ./src:/src
+      - static:/src/static
+      - media:/src/media
+
+volumes:
+  farm_db:
+  static:
+  media:
