@@ -5,19 +5,18 @@ WORKDIR /src
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN \
-apk update && apk add --no-cache python3 postgresql-libs && \
-apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev && \
-apk add gcc libc-dev make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev
+RUN apk update && \
+    apk add --no-cache python3 postgresql-libs && \
+    apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev zlib-dev jpeg-dev musl-dev && \
+    apk add --no-cache libc-dev make git libffi-dev openssl-dev libxml2-dev libxslt-dev
 
 COPY requirements.txt /src
-RUN python3 -m pip install -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps
+RUN python3 -m pip install -r requirements.txt --no-cache-dir && mkdir -m 777 media
 
 COPY ./src/ .
 
-RUN addgroup -S web && adduser -S web -G web \
-    && chown web:web -R /src
-USER web
+#RUN addgroup -S web && adduser -S web -G web \
+#    && chown web:web -R /src
+#USER web
 
 ENTRYPOINT ["/src/entrypoint.sh"]

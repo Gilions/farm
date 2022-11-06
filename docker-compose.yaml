@@ -29,10 +29,8 @@ services:
       - farm_db
     volumes:
       - ./src:/src
-      - static:/src/static
-      - media:/src/media
+      - ./src/media:/src/media
+      - ./src/static:/src/static
 
 volumes:
   farm_db:
-  static:
-  media:

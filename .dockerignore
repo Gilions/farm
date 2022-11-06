@@ -1,0 +1,19 @@
+19 lines (15 sloc)  161 Bytes
+.git/*
+env/
+venv/
+
+media/
+__pycache__/
+*.py[cod]
+
+.idea
+.DS_Store
+.AppleDouble
+.LSOverride
+.vscode
+
+*.sublime-project
+*.sublime-workspace
+
+.gitignore

@@ -23,7 +23,9 @@ class Product(models.Model):
     price = models.DecimalField(
         verbose_name='Стоимость',
         max_digits=12,
-        decimal_places=2
+        decimal_places=2,
+        null=True,
+        blank=True
     )
     is_active = models.BooleanField(
         default=True,
@@ -42,3 +44,11 @@ class Product(models.Model):
         verbose_name='Дата последнего обновления.',
         auto_now=True
     )
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
