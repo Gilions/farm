@@ -1,0 +1,48 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+  Как нас найти?
+{% endblock %}
+
+{% block header %}
+{% include "base/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="row py-2 bg-light">
+		<section class="member-details">
+              <div class="container">
+                <br><br><br><br>
+                <div class="row-fluid">
+                    <div class="col-md-8">
+                        <script type="text/javascript" charset="utf-8" async src="{{ info.maps_link }}&amp;width=717&amp;height=531&amp;lang=ru_RU&amp;scroll=true"></script>
+                      </div>
+                      <h2>Наши контакты.</h2>
+                        <address>
+                          <strong>{{ info.company_name }}</strong><br>
+                          {{ info.region }}<br>
+                          {{ info.city_type }} {{ info.city }}<br>
+                         {{ info.street }}<br>
+                          Россия, 171256<br>
+                          <abbr title="Phone"><b>Телефон:</b></abbr> {{ info.phone_number }}<br>
+                          <abbr title="e-Mail"><b>e-Mail:</b></abbr> {{ info.email }}<br>
+                            {% if info.whatsapp %}
+                                <abbr title="WhatsApp"><b>WhatsApp:</b></abbr> {{ info.whatsapp }}<br>
+                            {% endif %}
+                            {% if info.telegram %}
+                                <abbr title="Telegram"><b>Telegram:</b></abbr> {{ info.telegram }}<br>
+                            {% endif %}
+                        </address>
+                  </div>
+                </div>
+            </div>
+		</section>
+    </div>
+{% endblock content %}
+{% block footer %}
+    {% include "base/fooret.html" %}
+{% endblock %}
+
+
+

@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} Ошибка 500 {% endblock %}
+
+{% block header %}
+{% include "base/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">500</h1>
+        <p class="fs-3"> <span class="text-danger">Ошибка!</span> На сервере произошла ошибка.</p>
+        <p class="lead">
+          </p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную.</a>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+    {% include "base/fooret.html" %}
+{% endblock %}

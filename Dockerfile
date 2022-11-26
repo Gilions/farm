@@ -15,8 +15,8 @@ RUN python3 -m pip install -r requirements.txt --no-cache-dir && mkdir -m 777 me
 
 COPY ./src/ .
 
-#RUN addgroup -S web && adduser -S web -G web \
-#    && chown web:web -R /src
-#USER web
+RUN addgroup -S web && adduser -S web -G web \
+   && chown web:web -R /src
+USER web
 
 ENTRYPOINT ["/src/entrypoint.sh"]

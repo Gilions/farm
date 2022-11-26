@@ -25,6 +25,7 @@ INTERNAL_IPS = [
 
 # Application definition
 INSTALLED_APPS = [
+    'sorl.thumbnail',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,9 +33,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.product.apps.ProductConfig',
+    'solo',
 
-    'sorl.thumbnail',
+    'apps.product.apps.ProductConfig',
+    'apps.misc.apps.MiscConfig',
+    'apps.about.apps.AboutConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +121,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DJANGO_SU_USERNAME = os.getenv('DJANGO_SU_USERNAME', 'Farm')
 DJANGO_SU_EMAIL = os.getenv('DJANGO_SU_EMAIL', 'farm@farm.ru')
 DJANGO_SU_PASSWORD = os.getenv('DJANGO_SU_PASSWORD', 'password')
+
+
+PAGINATOR_SIZE = 6

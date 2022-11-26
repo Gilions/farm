@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} Ошибка 404 {% endblock %}
+
+
+{% block header %}
+{% include "base/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">404</h1>
+        <p class="fs-3"> <span class="text-danger">Opps!</span> Страница {{ path }} не найдена.</p>
+        <p class="lead">
+            Страница, которую вы ищите не найдена.
+          </p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную.</a>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+    {% include "base/fooret.html" %}
+{% endblock %}

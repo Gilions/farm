@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'farm/detail/style.css' %}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+{% include "base/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="row py-2 bg-light">
+		<section class="member-details">
+			<div class="container">
+					<div class="row">
+							<div class="col-lg-3 col-md-4">
+									<div class="img-container">
+                                    <img src={{ product.image.url }} alt="Ошибка загрузки." class="img-full">
+									</div>
+                                <div class="member_desc">
+											<ul class="styled_list">
+											<span><b>Оформить заказ:</b></span>
+													<li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <b>Телефон:</b> {{ info.phone_number }} </li>
+													<li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <b>e-Mail:</b> {{ info.email }} </li>
+                                                {% if info.whatsapp %}
+													<li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <b>WhatsApp</b> {{ info.whatsapp }}</li>
+                                                {% endif %}
+                                                {% if info.telegram %}
+													<li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <b>Telegram</b> {{ info.telegram }}</li>
+                                                {% endif %}
+											</ul>
+									</div>
+							</div>
+							<div class="col-lg-9 col-md-8">
+									<div class="member_designation">
+											<h2>{{ product.name }}</h2>
+											<br>
+											<span><b>Цена:</b> {{ product.price }} руб.</span>
+									</div>
+									<div class="member_desc">
+											<p class="p-card-view">
+													{{ product.description }}
+											</p>
+									</div>
+							</div>
+					</div>
+			</div>
+		</section>
+</div>
+{% endblock content %}
+{% block footer %}
+    {% include "base/fooret.html" %}
+{% endblock %}
+
+
+

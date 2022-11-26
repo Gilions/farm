@@ -23,9 +23,7 @@ class Product(models.Model):
     price = models.DecimalField(
         verbose_name='Стоимость',
         max_digits=12,
-        decimal_places=2,
-        null=True,
-        blank=True
+        decimal_places=2
     )
     is_active = models.BooleanField(
         default=True,
